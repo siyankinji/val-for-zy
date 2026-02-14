@@ -121,6 +121,7 @@
         text-align: center;
         display: flex;
         animation: cardFloat 8s ease-in-out infinite;
+            flex-direction: column;
       }
       .carddiv {
         width: 100%;
@@ -219,9 +220,7 @@
         font-size: 0.9rem;
         color: var(--text-soft);
       }
-      .m-0-50 {
-        margin: 0 50px;
-      }
+
       @keyframes floatBlobA {
         0% {
           transform: translate3d(0, 0, 0) scale(1);
@@ -346,7 +345,7 @@
 
       <div class="carddiv m-0-50">
         <div class="gallery">
-          <p id="galleryStatus" class="gallery-status">Loading memories…</p>
+          <h3 id="galleryStatus" class="gallery-status">Loading memories…</h3>
           <div id="slideshow" class="slideshow" aria-live="polite"></div>
           <div id="dots" class="dots" aria-label="Slideshow pagination"></div>
         </div>
@@ -381,7 +380,7 @@
 
       const fallbackPalette = {
         bgStart: "#2e1328",
-        bgEnd: "#5f1f3a",
+        bgEnd: "#f877ad",
         surface: "rgba(255, 255, 255, 0.1)",
         surfaceBorder: "rgba(255, 255, 255, 0.28)",
         textMain: "#fff7fb",
