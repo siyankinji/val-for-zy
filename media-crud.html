@@ -343,7 +343,7 @@
         </form>
         <p class="notice">
           Connected to Firebase Realtime Database path:
-          <strong>valentine/slideshow/assets</strong>. New files are uploaded to
+          <strong>valentine2/slideshow/assets</strong>. New files are uploaded to
           Firebase Storage and linked automatically.
         </p>
         <p class="status" id="statusMessage">Connecting to Firebase...</p>
@@ -391,7 +391,7 @@
       const app = initializeApp(firebaseConfig);
       const database = getDatabase(app);
       const storage = getStorage(app);
-      const assetsRef = dbRef(database, "valentine/slideshow/assets");
+      const assetsRef = dbRef(database, "valentine2/slideshow/assets");
 
       const form = document.getElementById("mediaForm");
       const mediaIdInput = document.getElementById("mediaId");
@@ -541,7 +541,7 @@
       async function uploadFileAndGetData(file) {
         const ext = file.name.split(".").pop() || "bin";
         const fileId = `${Date.now()}-${uid()}.${ext}`;
-        const path = `valentine/uploads/${fileId}`;
+        const path = `valentine2/uploads/${fileId}`;
         const fileRef = storageRef(storage, path);
         await uploadBytes(fileRef, file);
         const downloadUrl = await getDownloadURL(fileRef);
@@ -613,7 +613,7 @@
             }
 
             await set(
-              dbRef(database, `valentine/slideshow/assets/${editingId}`),
+              dbRef(database, `valentine2/slideshow/assets/${editingId}`),
               {
                 title,
                 description,
@@ -686,7 +686,7 @@
         if (!confirmed) return;
 
         try {
-          await remove(dbRef(database, `valentine/slideshow/assets/${id}`));
+          await remove(dbRef(database, `valentine2/slideshow/assets/${id}`));
           if (item.storagePath) {
             await deleteStorageFile(item.storagePath);
           }
@@ -705,7 +705,7 @@
           await Promise.all(
             items.map((item, index) =>
               set(
-                dbRef(database, `valentine/slideshow/assets/${item.id}`),
+                dbRef(database, `valentine2/slideshow/assets/${item.id}`),
                 toRecordPayload(item, index + 1),
               ),
             ),

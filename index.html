@@ -369,7 +369,7 @@
       const slideshow = document.getElementById("slideshow");
       const dotsWrap = document.getElementById("dots");
       const galleryStatus = document.getElementById("galleryStatus");
-      const trackId = "4ewAfHYpDTzpW1GKO44CVP";
+      const trackId = "7KD8oUUpidul2ROxTIhPAw";
       const ambientLayer = document.getElementById("ambientLayer");
       const foregroundHeartLayer = document.getElementById(
         "foregroundHeartLayer",
@@ -418,8 +418,8 @@
           data?.palette ||
           data?.colors ||
           data?.theme ||
-          data?.valentine?.palette ||
-          data?.valentine?.colors ||
+          data?.valentine2?.palette ||
+          data?.valentine2?.colors ||
           data;
 
         if (!raw || typeof raw !== "object") return null;
@@ -441,9 +441,9 @@
 
       async function initFirebasePalette() {
         const palettePaths = [
-          "valentine/palette",
-          "valentine/theme",
-          "palette/valentine",
+          "valentine2/palette",
+          "valentine2/theme",
+          "palette/valentine2",
         ];
 
         for (const path of palettePaths) {
@@ -540,9 +540,12 @@
       };
 
       async function fetchSlideshowData() {
-        const res = await fetch(`${FIREBASE_DB_URL}/valentine/slideshow.json`, {
-          cache: "no-store",
-        });
+        const res = await fetch(
+          `${FIREBASE_DB_URL}/valentine2/slideshow.json`,
+          {
+            cache: "no-store",
+          },
+        );
 
         if (!res.ok) {
           throw new Error(`Failed to load slideshow data (${res.status})`);
@@ -682,7 +685,16 @@ I hope when you see them, you’ll feel how much I love you. 🥺❤️” `);
         if (!ambientLayer) return;
 
         const heartCount = window.innerWidth < 640 ? 30 : 50;
-        const heartChar = ["❤", "♡", "💖", "💕"];
+        const heartChar = [
+          "❤",
+          "♡",
+          "💖",
+          "🌷",
+          "",
+          "💕",
+          "Beatzyyyyy",
+          "I love you",
+        ];
 
         ambientLayer.innerHTML = "";
         if (foregroundHeartLayer) foregroundHeartLayer.innerHTML = "";
@@ -708,7 +720,7 @@ I hope when you see them, you’ll feel how much I love you. 🥺❤️” `);
             `${-80 + Math.random() * 160}px`,
           );
 
-           const isForegroundHeart = Math.random() < 0.28;
+          const isForegroundHeart = Math.random() < 0.28;
           const targetLayer =
             isForegroundHeart && foregroundHeartLayer
               ? foregroundHeartLayer
